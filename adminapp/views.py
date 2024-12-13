@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from . models import *
+from shopapp.models import Orders
 
 def login_user(request):
     if request.method == 'POST':
@@ -75,4 +76,8 @@ def deleteproduct(request):
     return redirect('product-list')
 
 def orders(request):
-    return render(request, 'admin/orderlist.html')
+    orders = Orders.objects.all()
+    context = {
+        'orders': orders
+    }
+    return render(request, 'admin/orderlist.html', context)

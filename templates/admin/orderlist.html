@@ -29,13 +29,12 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Order Id</th>
-                  <th scope="col">Total Quantity</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">CGST</th>
-                  <th scope="col">SGST</th>
-                  <th scope="col">TAX</th>
-                  <th scope="col">Total Price</th>
+                  <th scope="col">Customer Name</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Product</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Order Date</th>
                   <th scope="col">status</th>
                 </tr>
               </thead>
@@ -43,21 +42,15 @@
               <tbody>
                 <tr>
                   <td >{{ forloop.counter }}</td>
-                  <td >{{x.order_id}}</td>
-                  <td >{{x.totalquantity}}</td>
-                  <td >{{x.price}} </td>
-                  <td >{{x.sgst}}</td>
-                  <td >{{x.cgst}}</td>
-                  <td >{{x.tax}}</td>
+                  <td >{{x.address.user}}</td>
+                  <td >{{x.address.address}}</td>
+                  <td >{{x.address.phone}} </td>
+                  <td >{{x.product}}</td>
                   <td >{{x.total}}</td>
+                  <td >{{x.order_date}}</td>
                   <td id="status{{x.id}}">{{x.status}}</td>
                   <td>
-                    <div class="btn-group me-2">
-                      <button class="btn btn-primary" type="submit" onclick="adminviewordereditem('{{x.id}}')">Ordered Items</button>
-                    </div>
-                     <!-- <div class="btn-group me-2">
-                      <a href="/dot/remove_user/?a={{x.id}}"><b<button class="btn-link border-0 bg-transparent text-body" onClick="confdelete();">cancel</button> </a>
-                      </div> -->
+                    
                   </td>
                   <td>
                     <div class="btn-group me-2">

@@ -113,7 +113,6 @@ def my_order(request):
             print(order)
             ordered_product=Product.objects.all().filter(id=order.product.id)
             ordered_products.append(ordered_product)
-        # print('product:', ordered_products)
     context = {
         'data':zip(ordered_products,orders)
     }

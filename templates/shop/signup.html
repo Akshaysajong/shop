@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop </title>
+  <link rel="stylesheet" href="/static/shop/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Title section -->
+    <div class="title">SignUp</div>
+    <div class="content">
+      <!-- Registration form -->
+      <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="user-details">
+          <!-- Input for First Name -->
+          <div class="input-box">
+            <span class="details">First Name</span>
+            <input type="text" placeholder="Enter your first name" name="first_name" required>
+          </div>
+          <!-- Input for Second Name -->
+          <div class="input-box">
+            <span class="details">Last Name</span>
+            <input type="text" placeholder="Enter your last name" name="last_name" required>
+          </div>
+          <!-- Input for Username -->
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" placeholder="Enter your username" name="username" required>
+          </div>
+          <!-- Input for Email -->
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="email" placeholder="Enter your email" name="email" required>
+          </div>
+          <!-- Input for Phone Number -->
+          <!-- <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" placeholder="Enter your number" name="phone" required>
+          </div> -->
+          <!-- Input for Password -->
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your password" name="password" required>
+          </div>
+        </div>
+        <!-- Submit button -->
+        <div class="button">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+      <div class="button">
+        <a class="links" href="{% url 'login-customer' %}">Login</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

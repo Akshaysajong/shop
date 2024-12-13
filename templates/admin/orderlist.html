@@ -1,0 +1,115 @@
+{% extends "./base1.html" %}
+
+{% block main %}
+  <main class="col-md-9 bgmain ms-sm-auto col-lg-10 px-md-4">
+     
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
+        <h1 class="h4">Orders List
+         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/index">Home</a></li>
+            <li class="breadcrumb-item">Orders List</li>
+          </ol></h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                  <!-- {% if perms.pms_app.view_foodorder %}
+                  <a href="/pms/foodlist"><button type="button" class="btn btn-sm">Food List</button></a>
+                  {% endif %} -->
+                  <!-- {% if perms.pms_app.view_orderitems %}
+                  <a href="/patient/ordereditems"><button type="button" class="btn btn-sm">Ordered Items</button></a>
+                  {% endif %} -->
+                
+                
+                </div>
+        </div>
+      </div>
+      
+      <div class="table-responsive card rounded-1 border-0 shadow mt-4 mb-4">
+            <h5 class="text-uppercase fw-bold mb-0 p-4 pt-3 pb-3">Orders List</h5>
+            <table id="example" class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Order Id</th>
+                  <th scope="col">Total Quantity</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">CGST</th>
+                  <th scope="col">SGST</th>
+                  <th scope="col">TAX</th>
+                  <th scope="col">Total Price</th>
+                  <th scope="col">status</th>
+                </tr>
+              </thead>
+              {% for x in orders %}
+              <tbody>
+                <tr>
+                  <td >{{ forloop.counter }}</td>
+                  <td >{{x.order_id}}</td>
+                  <td >{{x.totalquantity}}</td>
+                  <td >{{x.price}} </td>
+                  <td >{{x.sgst}}</td>
+                  <td >{{x.cgst}}</td>
+                  <td >{{x.tax}}</td>
+                  <td >{{x.total}}</td>
+                  <td id="status{{x.id}}">{{x.status}}</td>
+                  <td>
+                    <div class="btn-group me-2">
+                      <button class="btn btn-primary" type="submit" onclick="adminviewordereditem('{{x.id}}')">Ordered Items</button>
+                    </div>
+                     <!-- <div class="btn-group me-2">
+                      <a href="/dot/remove_user/?a={{x.id}}"><b<button class="btn-link border-0 bg-transparent text-body" onClick="confdelete();">cancel</button> </a>
+                      </div> -->
+                  </td>
+                  <td>
+                    <div class="btn-group me-2">
+                      {% if x.status == "pending" %} 
+                      <button class="btn btn-primary" type="submit" onclick="approveorder('{{x.id}}')">Approve Order</button>
+                      {% elif x.status == 'approved' %}
+                      <button class="btn btn-primary" type="submit" onclick="orderpacked('{{x.id}}')">Order Packed</button>
+                      {% elif x.status == 'packed' %}
+                      <button class="btn btn-primary" type="submit" onclick="orderondelivery('{{x.id}}')">On Delivery</button>
+                      {% elif x.status == 'ondelivery' %}
+                      <button class="btn btn-primary" type="submit" onclick="orderdelivered('{{x.id}}')">Delivered</button>
+                      {% endif %}           
+                    </div>
+                  </td>  
+                  <td>  
+                    <div class="btn-group me-2">
+                      {% if x.status == "pending" %} 
+                        <button class="btn btn-primary" type="submit" onclick="adm_cancelodr('{{x.id}}')">Cancel Order</button>
+                      {% endif %}   
+                    </div>
+                  </td>   
+                     
+                </tr>
+              </tbody>
+              {% endfor %}
+            </table>
+            <div class="modal fade" id="view_orderitems" tabindex="-1" aria-labelledby="cartitemsmdlLabel" aria-hidden="true">
+              <div class="modal-dialog mt-5 pt-5">
+                <div class="modal-content p-3 shadow">
+                  <div class="modal-header border-0">
+                    <h4 class="modal-title" id="cartitemsmdlLabel">Ordered Items</h4>
+                    <button type="button" class="btn-close bg-white p-3 rounded-circle shadow-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <table>
+                      <thead>
+                        <tr><th>Item</th><th>Price</th><th>Qty</th><th>Total</th></tr>
+                      </thead>
+                      <tbody id="p_orderitems"></tbody>
+                    </table>
+                  </div>
+                  <!-- <div class="modal-footer mt-4 border-0 start-0">
+                    <button type="button" class="btn btn-primary">Place order</button> <button type="button" class="btn btn-outline-primary border-2">Cancel Order</button>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+
+
+
+      </div>   
+
+
+  </main>
+{% endblock %}  

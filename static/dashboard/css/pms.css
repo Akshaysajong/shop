@@ -1,0 +1,39 @@
+.non_veg{
+    margin-left: 10px;
+    width:10px;
+    display: inline-block;
+    border-radius:5px;
+    height:10px;
+    background: #FF0000;
+    
+  }
+.veg{
+    margin-left: 10px;
+    width:10px;
+    display: inline-block;
+    border-radius:5px;
+    height:10px;
+    background: #00FF00;
+    /* float: left; */
+}
+
+.card1 {
+   display: flex;
+  }
+  
+  .price {
+    color: grey;
+    font-size: 22px;
+  }
+  .card button:hover {
+    opacity: 0.7;
+  }
+  
+/* #foodlt td{
+    margin-left: 10px;
+    width:10px;
+    display: inline-block;
+    border-radius:5px;
+    height:10px;
+    background: #FF0000;
+} */

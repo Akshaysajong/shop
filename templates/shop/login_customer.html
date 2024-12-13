@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop </title>
+  <link rel="stylesheet" href="/static/shop/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Title section -->
+    <div class="title">SignIn</div>
+    <div class="content">
+      <!-- Registration form -->
+      <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="user-details">
+          <!-- Input for Username -->
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" placeholder="Enter your username" name="username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your password" name="password" required>
+          </div>
+        </div>
+        <!-- Submit button -->
+        <div class="button">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+      <div class="button">
+        <a class="links" href="{% url 'signup' %}">Register</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
